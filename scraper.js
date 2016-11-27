@@ -41,11 +41,11 @@ function fetchPage(url, callback) {
 
 function run(db) {
 	// Use request to read in pages.
-	fetchPage("https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?valcode=USD&date=20161125&json", function (body) {
+	fetchPage("http://oligarh.org.ua", function (body) {
 		// Use cheerio to find things in the page with css selectors.
 		var $ = cheerio.load(body);
 
-		var elements = $cheerio.load(body).each(function () {
+		var elements = $(".art-postheadericon").each(function () {
 			var value = $(this).text().trim();
 			updateRow(db, value);
 		});
