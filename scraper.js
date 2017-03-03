@@ -41,14 +41,11 @@ function fetchPage(url, callback) {
 
 function run(db) {
 	// Use request to read in pages.
-	fetchPage("http://oligarh.org.ua", function (body) {
+	fetchPage("https://public.api.openprocurement.org/api/0/tenders/d02943e63d2a45ddb230a8ab8b2311f5", function (body) {
 		// Use cheerio to find things in the page with css selectors.
 		var $ = cheerio.load(body);
 
-		var elements = $(".art-postheadericon").each(function () {
-			var value = $(this).text().trim();
-			updateRow(db, value);
-		});
+		updateRow(db, body);
 
 		readRows(db);
 
