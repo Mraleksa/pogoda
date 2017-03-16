@@ -12,3 +12,6 @@ db.serialize(function() {
   statement.run('A new title to add');
   statement.finalize();
 });
+
+
+console.log("done")
